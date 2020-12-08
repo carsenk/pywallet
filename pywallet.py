@@ -84,6 +84,7 @@ aversions = {};
 for i in range(256):
 	aversions[i] = "version %d" % i;
 aversions[0] = 'Bitcoin';
+aversions[30] = 'Denarius';
 aversions[48] = 'Litecoin';
 aversions[52] = 'Namecoin';
 aversions[111] = 'Testnet';
@@ -119,10 +120,10 @@ def systype():
 def determine_db_dir():
 	if wallet_dir in "":
 		if platform.system() == "Darwin":
-			return os.path.expanduser("~/Library/Application Support/Bitcoin/")
+			return os.path.expanduser("~/Library/Application Support/Denarius/")
 		elif platform.system() == "Windows":
-			return os.path.join(os.environ['APPDATA'], "Bitcoin")
-		return os.path.expanduser("~/.bitcoin")
+			return os.path.join(os.environ['APPDATA'], "Denarius")
+		return os.path.expanduser("~/.denarius")
 	else:
 		return wallet_dir
 
@@ -2002,7 +2003,7 @@ def open_wallet(db_env, walletfile, writable=False):
 		r = True
 
 	if r is not None:
-		logging.error("Couldn't open wallet.dat/main. Try quitting Bitcoin and running this again.")
+		logging.error("Couldn't open wallet.dat/main. Try quitting Denarius and running this again.")
 		sys.exit(1)
 
 	return db
@@ -4754,7 +4755,7 @@ if __name__ == '__main__':
 		help="KEY is in hexadecimal format")
 
 	parser.add_option("--datadir", dest="datadir",
-		help="wallet directory (defaults to bitcoin default)")
+		help="wallet directory (defaults to denarius default)")
 
 	parser.add_option("--wallet", dest="walletfile",
 		help="wallet filename (defaults to wallet.dat)",
